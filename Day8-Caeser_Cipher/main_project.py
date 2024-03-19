@@ -21,12 +21,21 @@ def caesar_cipher(plain_text, shift_amount, direction):
             result_text += char 
     return f"The {direction} text is :{result_text}"
 
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n")) % 26
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+from art import logo
+print(logo)
 
-if direction in ['encode', 'decode']:
-    print(caesar_cipher(text, shift, direction))
-else:
-    print("Enter valid input as 'encode' or 'decode'.")
+should_continue = True
+while should_continue:
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n")) % 26
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+
+    if direction in ['encode', 'decode']:
+        print(caesar_cipher(text, shift, direction))
+    else:
+        print("Enter valid input as 'encode' or 'decode'.")
     
+    result = input("Type 'yes' if you want to continue again. Otherwise type 'no'.\n")
+    if result == 'no':
+        should_continue = False
+        print("Goodbye")        
