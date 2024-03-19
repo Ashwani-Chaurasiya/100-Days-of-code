@@ -8,7 +8,7 @@ def caesar_cipher(plain_text, shift_amount, direction):
         shift (int): enter shift number
         direction (str): 'encode' to encrypt, 'decode' to decrypt
     """
-    encoded_text = ""
+    result_text = ""
     for char in plain_text:
         if char in alphabet:
             position = alphabet.index(char)
@@ -16,10 +16,10 @@ def caesar_cipher(plain_text, shift_amount, direction):
                 new_position = (position + shift_amount) % 26
             elif direction == 'decode':
                 new_position = (position - shift_amount) % 26
-            encoded_text += alphabet[new_position]
+            result_text += alphabet[new_position]
         else:
-            encoded_text += char 
-    return encoded_text
+            result_text += char 
+    return f"The {direction} text is :{result_text}"
 
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n")) % 26
